@@ -1,0 +1,21 @@
+<section style="margin-top: 20px" class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8"  data-ng-controller="CommittedController">
+    <accordion close-others="oneAtATime">
+        <accordion-group style="margin: auto" heading="{{article.title}}" ng-repeat="article in articles | filter:isCommitted">
+        <span>Members:</span>
+            <br/>
+            <br/>
+        <ul class="list-group ">
+            <li class="list-group-item"  ng-repeat="member in article.members">
+                <a title="Email {{member.displayName}}" href="mailto:{{member.email}}">{{member.email}}</a>
+            </li>
+         </ul>
+        </accordion-group>
+
+    </accordion>
+
+   <!-- <ul class="list-group ">
+        <li class="list-group-item"  ng-repeat="article in articles">
+            {{article.members[0].displayName}}
+            {{article.title}}
+    </ul>-->
+</section>

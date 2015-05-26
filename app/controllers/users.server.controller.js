@@ -16,8 +16,8 @@ var transport = nodemailer.createTransport();
 var transport = nodemailer.createTransport('SMTP', {
     service: 'Gmail',
     auth: {
-        user: 'maorfrank@gmail.com',
-        pass: 'bimba1234'
+        user: 'ideas.homemail@gmail.com',
+        pass: 'bamba1234'
     }
 });
 

@@ -1,0 +1,25 @@
+<section data-ng-controller="ListController">
+    <div style="position: absolute; width: 100%; height: 90%;  background-color: transparent" class="jumbotron text-center">
+            <button ng-click="go('/articles', 'create')" class="btn btn-danger pull-right " data-ng-show="authentication.user">New Idea</button>
+            <span class="listQuote"> "{{quote.text}}",&nbsp&nbsp {{quote.author}} </span>
+           <!-- <div class="row">
+                <h2 style="font-size:45px; color: #000000; font-family: monospacef" class="lead">
+                    Innovation Week Board
+                </h2>
+            </div>-->
+            <br/>
+
+            <div style="margin-top: 40px" class="row">
+                <div class="">
+                    <ul class = "inventionsList">
+                        <li ng-click="go('/articles', article._id)" ng-repeat="article in articles">
+                           <!-- <img src="modules/core/img/pin.jpg" >-->
+                            <span class="name">{{article.user.displayName}}</span>
+                            <div class="members">Members({{article.members.length}})</div>
+                            <span class="description">{{article.title}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</section>

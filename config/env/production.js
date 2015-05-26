@@ -10,11 +10,14 @@ module.exports = {
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
-				'public/lib/angular-resource/angular-resource.js',
-                'public/lib/angular-route/release/angular-route.min.js',
+                'public/lib/angular-timer/dist/angular-timer.min.js',
+				'public/lib/angular-resource/angular-resource.min.js',
+                'public/lib/angular-multi-select/angular-multi-select.min.js',
+                'public/lib/angular-route/angular-route.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
+
 			]
 		},
 		css: 'public/dist/application.min.css',

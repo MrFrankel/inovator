@@ -5,12 +5,12 @@ angular.module('users').controller('EmailController', ['$scope','$window', '$htt
 		$scope.authentication = Authentication;
 		//If user is signed in then redirect back home
 		if (!$scope.authentication.user){
-            $location.path('/');
+            $location.path('/signin');
         }
 
         $scope.email = function() {
             var artId = ($location.search()).article;
-            jQuery('body').css('cursor', 'progress');
+            angular.element(document.querySelector('body')).css('cursor', 'progress');
             $scope.article = Articles.get({
                 articleId: artId
             }, function(){
@@ -21,7 +21,7 @@ angular.module('users').controller('EmailController', ['$scope','$window', '$htt
                     'content': $scope.content
 
                 }).success(function (data, status, headers, config) {
-                    jQuery('body').css('cursor', 'default');
+                    angular.element(document.querySelector('body')).css('cursor', 'default');
                     if (data.success) {
                         $window.history.back();
                         console.log(data);

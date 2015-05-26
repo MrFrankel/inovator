@@ -1,27 +1,31 @@
 <section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-        <div class="row">
-            <span class="lead">
-                Innovation week board
-            </span>
-            <button ng-click="go('/articles', 'create')" class="btn pull-right " data-ng-show="authentication.user">New</button>
+    <div class="coreBG"></div>
+    <div class="timerContiner">
+        <timer class="timerHome" end-time="1403470800000">{{days}} days, {{hours}} hours, {{minutes}} minutes and {{seconds}} seconds to go!</timer>
+        <br/>
+        <br/>
+        <br/>
+        <div class="signContainer" data-ng-hide="authentication.user">
+            <h2 style="margin-left: -90px;">So What Are You Waiting For?</h2>
+            <br/>
+            <button ng-click="go('/signup')" class="btn btn-default">Sign Up</button>
+            <button  ng-click="go('/signin')" style="margin-left: 10px" class="btn btn-default">Sign In</button>
         </div>
-
-		<div class="row">
-			<div class="">
-                <ul class = "inventionsList">
-                    <li ng-click="go('/articles', invention._id)" ng-repeat="invention in inventions">
-                        <span class="name">{{invention.user.displayName}}</span>
-                        </br>
-                        <span class="description">{{invention.title}}</span>
-                        </br>
-                        </br>
-                        </br>
-                        <span class="description">{{invention.content}}</span>
+    </div>
+    <!--<div style="height: 550px">
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <div style="width:100%; height:550px;">
+                    <span class="name">{{slide.user.displayName}}</span>
+                    </br>
+                    <span class="description">{{slide.title}}</span>
+                    </br>
+                    </br>
+                    </br>
+                    <span class="description">{{slide.content}}</span>
                     </li>
-                </ul>
-
-            </div>
-		</div>
-   </div>
+                </div>
+            </slide>
+        </carousel>
+    </div>-->
 </section>

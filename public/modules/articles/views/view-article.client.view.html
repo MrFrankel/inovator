@@ -1,31 +1,19 @@
 <section class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-8" data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="article.title"></h1>
-	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
-		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-
-
-    <br/>
-    <br/>
-    Content:
-	<p class="lead" data-ng-bind="article.content"></p>
+    <div style="position: absolute;right: 0;top: 50px;" data-ng-show="authentication.user._id == article.user._id">
+        <a title="edit" class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a title="delete" class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <div class="page-header">
+        <h1 style="word-wrap: break-word; width: 80%" data-ng-bind="article.title"></h1>
+    </div>
 
     <br/>
     <br/>
-    Current Members:
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="member in article.members">
-            <a href="/#!/email?article={{article._id}}">{{member.displayName}}</a>
-    </ul>
-    <br/>
-    <br/>
+    <div class="articleContentWell well well-lg" data-ng-bind="article.content"></div>
     <small>
         <em class="text-muted">
             Invented on
@@ -34,4 +22,37 @@
             <span data-ng-bind="article.user.displayName"></span>
         </em>
     </small>
+    <div class="membersList">
+        <div>Members:</div>
+        <br/>
+        <ul class="list-group ">
+            <li class="list-group-item" ng-repeat="member in article.members">
+                {{member.displayName}}
+                <br/>
+                <a title="Email {{member.displayName}}" href="mailto:{{member.email}}">{{member.email}}</a>
+        </ul>
+    </div>
+
+    <div class="page-header">
+    </div>
+    <div style="width: 100%; margin-top: 50px; margin-left: 15px">
+        <div>ALL COMMENTS({{article.comments.length}})</div>
+        <br/>
+        <form ng-submit="addComment()"  data-ng-show="authentication.user">
+            <textarea placeholder="Share your thoughts" style="resize: none; width: 100%" data-ng-model="comment"></textarea>
+            <button style="float: right" type="submit" class="btn btn-primary" data-ng-disabled="!comment.length">Post</button>
+        </form>
+        <br/>
+        <br/>
+        <ul  style="margin-left: 10px">
+            <li class="commentListItem" ng-repeat="comment in article.comments">
+                <a title="Email {{comment.author.displayName}}" href="mailto:{{comment.author.email}}">{{comment.author.displayName}}</a><small class="commentBefore">{{timeAgo(comment.date)}} ago</small>
+                <br/>
+                <div style="margin-left:10px; word-wrap: break-word; white-space: pre">{{comment.content}}</div>
+                <br/>
+        </ul>
+    </div>
+    <br/>
+    <br/>
+
 </section>
